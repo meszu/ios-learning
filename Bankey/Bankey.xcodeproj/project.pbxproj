@@ -10,6 +10,8 @@
 		144DB9EF2805985B005180E4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144DB9EE2805985B005180E4 /* LoginView.swift */; };
 		144DB9F22806FED7005180E4 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144DB9F12806FED7005180E4 /* OnboardingContainerViewController.swift */; };
 		144DB9F4280708AF005180E4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144DB9F3280708AF005180E4 /* OnboardingViewController.swift */; };
+		14DD031A280848E800F5F708 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD0319280848E800F5F708 /* DummyViewController.swift */; };
+		14DD031D28084E3C00F5F708 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD031C28084E3C00F5F708 /* LocalState.swift */; };
 		14DD3BA128047071001412C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD3BA028047071001412C6 /* AppDelegate.swift */; };
 		14DD3BA528047071001412C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD3BA428047071001412C6 /* LoginViewController.swift */; };
 		14DD3BAA28047071001412C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14DD3BA928047071001412C6 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 		144DB9EE2805985B005180E4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		144DB9F12806FED7005180E4 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		144DB9F3280708AF005180E4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		14DD0319280848E800F5F708 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		14DD031C28084E3C00F5F708 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		14DD3B9D28047071001412C6 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DD3BA028047071001412C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14DD3BA428047071001412C6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			children = (
 				14DD3BA428047071001412C6 /* LoginViewController.swift */,
 				144DB9EE2805985B005180E4 /* LoginView.swift */,
+				14DD0319280848E800F5F708 /* DummyViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -65,6 +70,14 @@
 				144DB9F3280708AF005180E4 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		14DD031B28084E2B00F5F708 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				14DD031C28084E3C00F5F708 /* LocalState.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		14DD3B9428047071001412C6 = {
@@ -86,6 +99,7 @@
 		14DD3B9F28047071001412C6 /* Bankey */ = {
 			isa = PBXGroup;
 			children = (
+				14DD031B28084E2B00F5F708 /* Utils */,
 				144DB9F02806FEA8005180E4 /* Onboarding */,
 				144DB9EC280597C7005180E4 /* Files */,
 				144DB9ED28059821005180E4 /* Login */,
@@ -165,6 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				144DB9EF2805985B005180E4 /* LoginView.swift in Sources */,
+				14DD031D28084E3C00F5F708 /* LocalState.swift in Sources */,
+				14DD031A280848E800F5F708 /* DummyViewController.swift in Sources */,
 				14DD3BA528047071001412C6 /* LoginViewController.swift in Sources */,
 				144DB9F4280708AF005180E4 /* OnboardingViewController.swift in Sources */,
 				14DD3BA128047071001412C6 /* AppDelegate.swift in Sources */,
