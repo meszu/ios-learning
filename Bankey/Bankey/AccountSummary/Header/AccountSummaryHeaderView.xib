@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountSummaryHeaderView" customModule="Bankey" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="lEO-mz-gbE"/>
+                <outlet property="dateLabel" destination="eCG-bY-aBh" id="i8T-RY-sHG"/>
+                <outlet property="nameLabel" destination="L7A-v6-R8d" id="BZk-yJ-Fvs"/>
+                <outlet property="welcomeLabel" destination="PIQ-oq-S8y" id="eZe-ue-mFB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
