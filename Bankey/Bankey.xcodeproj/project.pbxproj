@@ -25,6 +25,8 @@
 		14917E0528120908005518AD /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14917E0428120908005518AD /* ProfileTests.swift */; };
 		14917E0728120994005518AD /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14917E0628120994005518AD /* AccountTests.swift */; };
 		14B910B1281002FB009494E7 /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B910B0281002FB009494E7 /* AccountSummaryCell.swift */; };
+		14CB54F62814A747009C2F8E /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CB54F52814A746009C2F8E /* ProfileManager.swift */; };
+		14CB54F82814A951009C2F8E /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CB54F72814A951009C2F8E /* AccountSummaryViewControllerTests.swift */; };
 		14DAE1082812FA0E005FED97 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAE1072812FA0E005FED97 /* SkeletonLoadable.swift */; };
 		14DAE10A2812FAC7005FED97 /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAE1092812FAC7005FED97 /* SkeletonCell.swift */; };
 		14DD031A280848E800F5F708 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DD0319280848E800F5F708 /* DummyViewController.swift */; };
@@ -66,6 +68,8 @@
 		14917E0428120908005518AD /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		14917E0628120994005518AD /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
 		14B910B0281002FB009494E7 /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
+		14CB54F52814A746009C2F8E /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		14CB54F72814A951009C2F8E /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
 		14DAE1072812FA0E005FED97 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
 		14DAE1092812FAC7005FED97 /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		14DD0319280848E800F5F708 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				14917E002811FB2F005518AD /* AccountSummaryViewController+Networking.swift */,
 				14B910AE281002B2009494E7 /* Header */,
 				14B910AF281002D2009494E7 /* Cells */,
+				14CB54F42814A704009C2F8E /* Networking */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			children = (
 				14917E0428120908005518AD /* ProfileTests.swift */,
 				14917E0628120994005518AD /* AccountTests.swift */,
+				14CB54F72814A951009C2F8E /* AccountSummaryViewControllerTests.swift */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -180,6 +186,14 @@
 				14DAE1092812FAC7005FED97 /* SkeletonCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		14CB54F42814A704009C2F8E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				14CB54F52814A746009C2F8E /* ProfileManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		14DD031B28084E2B00F5F708 /* Utils */ = {
@@ -342,6 +356,7 @@
 				141C94F328113570004DCFBE /* CurrencyFormatterTests.swift in Sources */,
 				14917E0728120994005518AD /* AccountTests.swift in Sources */,
 				14917E0528120908005518AD /* ProfileTests.swift in Sources */,
+				14CB54F82814A951009C2F8E /* AccountSummaryViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +367,7 @@
 				143E8655280C20D200E177E3 /* UIVieController+Utils.swift in Sources */,
 				14DAE10A2812FAC7005FED97 /* SkeletonCell.swift in Sources */,
 				14917DFF2811F97C005518AD /* Date+Utils.swift in Sources */,
+				14CB54F62814A747009C2F8E /* ProfileManager.swift in Sources */,
 				144DB9EF2805985B005180E4 /* LoginView.swift in Sources */,
 				14DD031D28084E3C00F5F708 /* LocalState.swift in Sources */,
 				147158EE2810B1DD0000400A /* Decimal+Util.swift in Sources */,
