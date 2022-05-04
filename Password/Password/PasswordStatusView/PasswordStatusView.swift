@@ -90,7 +90,7 @@ extension PasswordStatusView {
         boldTextAttributes[.font] = UIFont.preferredFont(forTextStyle: .subheadline)
         boldTextAttributes[.foregroundColor] = UIColor.label
         
-        let attrText = NSMutableAttributedString(string: "Use at leaset ", attributes: plainTextAttributes)
+        let attrText = NSMutableAttributedString(string: "Use at least ", attributes: plainTextAttributes)
         attrText.append(NSAttributedString(string: "3 of these 4 ", attributes: boldTextAttributes))
         attrText.append(NSAttributedString(string: "criteria when setting your password:", attributes: plainTextAttributes))
         
@@ -161,5 +161,20 @@ extension PasswordStatusView {
         lowerCaseCriteriaView.reset()
         digitCriteriaView.reset()
         specialCharacterCriteriaView.reset()
+    }
+}
+
+// MARK: - Tests
+extension PasswordCriteriaView {
+    var isCheckMarkImage: Bool {
+        return imageView.image == checkmarkImage
+    }
+    
+    var isXmarkImage: Bool {
+        return imageView.image == xmarkImage
+    }
+    
+    var isResetImage: Bool {
+        return imageView.image == circleImage
     }
 }
