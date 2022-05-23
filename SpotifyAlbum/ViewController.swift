@@ -37,6 +37,9 @@ class ViewController: UIViewController {
     
     var collectionView: UICollectionView! = nil
     
+    var headerView: HeaderView?
+    var floatingHeaderView = HeaderView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
@@ -70,7 +73,20 @@ extension ViewController {
                                 withReuseIdentifier: HeaderView.reuseIdentifier)
         
         collectionView.dataSource = self
-        // collectionView.delegate = self
+        collectionView.delegate = self
+        
+        // Floating header view
+        floatingHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(floatingHeaderView)
+        
+        floatingHeaderView.track = Track(imageName: "tron")
+        floatingHeaderView.isFloating = true
+        
+        NSLayoutConstraint.activate([
+            floatingHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            floatingHeaderView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
     func createLayout() -> UICollectionViewLayout {
@@ -124,6 +140,17 @@ extension ViewController: UICollectionViewDataSource {
         let track = Track(imageName: "tron")
         headerView.track = track
         
+        self.headerView = headerView
+        self.headerView?.isHidden = true
+        
         return headerView
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        headerView?.scrollViewDidScroll(scrollView)
+        floatingHeaderView.scrollViewDidScroll(scrollView)
     }
 }
