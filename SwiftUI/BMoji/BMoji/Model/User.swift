@@ -29,22 +29,28 @@ struct User: Codable, Identifiable {
 class UserClass: ObservableObject {
     @Published var user: User
     
+    private let savePath = FileManager.documentsDirectory.appendingPathComponent("UserProfile")
+    
     init() {
-//        if let data = try? Data(contentsOf: FileManager.documentsDirectory.appendingPathComponent("SavedUser")) {
-//            if let decoded = try? JSONDecoder().decode(User.self, from: data) {
-//                user = decoded
-//                print("Successfully loaded data from SavedUser")
-//                return
-//            }
-//        }
-        if let data = UserDefaults.standard.data(forKey: "UserFile") {
-            print("Successfully read the data from UserDefaults")
+        // Using Documents Directory
+        
+        if let data = try? Data(contentsOf: savePath) {
             if let decoded = try? JSONDecoder().decode(User.self, from: data) {
-                print("Successfully decoded the data")
                 user = decoded
+                print("Successfully loaded data from SavedUser")
                 return
             }
         }
+        
+        // Using User Defaults:
+//        if let data = UserDefaults.standard.data(forKey: "UserFile") {
+//            print("Successfully read the data from UserDefaults")
+//            if let decoded = try? JSONDecoder().decode(User.self, from: data) {
+//                print("Successfully decoded the data")
+//                user = decoded
+//                return
+//            }
+//        }
         print("No data, not decoded")
         user = User.example
     }

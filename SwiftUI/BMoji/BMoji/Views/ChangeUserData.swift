@@ -20,7 +20,7 @@ struct ChangeUserData: View {
     @State private var picName = ""
     @State private var isReadyForSave = false
     
-    private let savePath = FileManager.documentsDirectory.appendingPathExtension("SavedUser")
+    private let savePath = FileManager.documentsDirectory.appendingPathComponent("UserProfile")
     
     var body: some View {
         NavigationView {
@@ -92,8 +92,11 @@ struct ChangeUserData: View {
         
         do {
             let data = try JSONEncoder().encode(userClass.user)
-            UserDefaults.standard.set(data, forKey: "UserFile")
-//            try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
+            // Using User Default:
+//            UserDefaults.standard.set(data, forKey: "UserFile")
+            
+            // Using Documents Directory:
+            try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
             print("Successfully saved data")
         } catch {
             print("Unable to save data.")
