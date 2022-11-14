@@ -30,7 +30,6 @@ struct ChangeUserData: View {
                     TextField("Last Name", text: $lastName)
                 }
                 
-                
                 VStack {
                     HStack {
                             if image != nil {
@@ -47,7 +46,6 @@ struct ChangeUserData: View {
                                     .padding()
                             }
                             
-                            
                             Spacer()
                             
                             Button("Select") {
@@ -59,12 +57,6 @@ struct ChangeUserData: View {
                     Button("Save", action: save)
                     .buttonStyle(GrowingButton())
                 }
-                
-                    
-                
-                    
-                
-                
             }
             .toolbar {
                 Button("Dismiss") {
@@ -100,7 +92,8 @@ struct ChangeUserData: View {
         
         do {
             let data = try JSONEncoder().encode(userClass.user)
-            try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
+            UserDefaults.standard.set(data, forKey: "UserFile")
+//            try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
             print("Successfully saved data")
         } catch {
             print("Unable to save data.")

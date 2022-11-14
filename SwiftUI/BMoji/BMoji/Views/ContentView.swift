@@ -16,7 +16,7 @@ struct ContentView: View {
         
         if userClass.user.isLoggedIn {
             TabView {
-                HomeView()
+                HomeView(userClass: userClass)
                     .tabItem {
                         Label("Main", systemImage: "person.circle")
                     }

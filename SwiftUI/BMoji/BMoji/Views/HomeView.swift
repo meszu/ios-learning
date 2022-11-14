@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct HomeView: View {
-    @EnvironmentObject var userClass: UserClass
+    @ObservedObject var userClass: UserClass
     @EnvironmentObject var viewModel: ViewModel
     
     @State private var isShowingChangeUserData = false
@@ -58,6 +58,7 @@ struct HeaderView: View {
             Image(uiImage: userClass.user.image)
                 .resizable()
                 .frame(width: 80, height: 80)
+                .cornerRadius(20)
             
             VStack(alignment: .leading) {
                 Text(userClass.user.firstName)
@@ -73,7 +74,7 @@ struct HeaderView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(userClass: UserClass())
             .environmentObject(ViewModel())
             .environmentObject(UserClass())
     }
