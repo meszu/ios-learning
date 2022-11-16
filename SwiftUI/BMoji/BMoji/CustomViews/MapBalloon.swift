@@ -19,7 +19,7 @@ struct MapBalloonShape: Shape {
 }
 
 struct MapBalloon: View {
-    let lineWidth: Double = 3.0
+    let lineWidth: Double = 5.0
     var shape: String
     var strokeColor: Color
     

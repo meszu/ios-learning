@@ -21,7 +21,6 @@
 		14A7F7F529204A99006DEA77 /* EditView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F7F429204A99006DEA77 /* EditView-ViewModel.swift */; };
 		14DA33E92921714900533DDD /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA33E82921714900533DDD /* GrowingButton.swift */; };
 		14DA33F1292180BF00533DDD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA33F0292180BF00533DDD /* User.swift */; };
-		14DA33F32921834900533DDD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA33F22921834900533DDD /* LoginView.swift */; };
 		14DA33F5292184F500533DDD /* ChangeUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA33F4292184F400533DDD /* ChangeUserData.swift */; };
 		14DA33F729218D3A00533DDD /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA33F629218D3A00533DDD /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +41,6 @@
 		14A7F7F429204A99006DEA77 /* EditView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditView-ViewModel.swift"; sourceTree = "<group>"; };
 		14DA33E82921714900533DDD /* GrowingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButton.swift; sourceTree = "<group>"; };
 		14DA33F0292180BF00533DDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		14DA33F22921834900533DDD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		14DA33F4292184F400533DDD /* ChangeUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserData.swift; sourceTree = "<group>"; };
 		14DA33F629218D3A00533DDD /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +113,6 @@
 				14A7F7F029201B20006DEA77 /* MapView.swift */,
 				14A7F7F2292048A7006DEA77 /* EditView.swift */,
 				14DA33F4292184F400533DDD /* ChangeUserData.swift */,
-				14DA33F22921834900533DDD /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,7 +236,6 @@
 				14A7F7ED29200AE0006DEA77 /* ViewModel.swift in Sources */,
 				14DA33F1292180BF00533DDD /* User.swift in Sources */,
 				14A7F7EB292009F4006DEA77 /* Location.swift in Sources */,
-				14DA33F32921834900533DDD /* LoginView.swift in Sources */,
 				14DA33F729218D3A00533DDD /* ImagePicker.swift in Sources */,
 				1419A56228DDDDC0008AE81F /* BMojiApp.swift in Sources */,
 				14DA33E92921714900533DDD /* GrowingButton.swift in Sources */,
@@ -374,6 +370,7 @@
 				DEVELOPMENT_TEAM = DP687Z5DR7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Enable to fasten your log in procedure.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Needed for profile picture selection.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -404,6 +401,7 @@
 				DEVELOPMENT_TEAM = DP687Z5DR7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Enable to fasten your log in procedure.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Needed for profile picture selection.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -37,7 +37,7 @@ class UserClass: ObservableObject {
         if let data = try? Data(contentsOf: savePath) {
             if let decoded = try? JSONDecoder().decode(User.self, from: data) {
                 user = decoded
-                print("Successfully loaded data from SavedUser")
+                print("Successfully loaded data from UserProfile")
                 return
             }
         }

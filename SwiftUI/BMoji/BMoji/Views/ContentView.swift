@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        if userClass.user.isLoggedIn {
+        if viewModel.isUnlocked {
             TabView {
                 HomeView(userClass: userClass)
                     .tabItem {
@@ -31,7 +31,9 @@ struct ContentView: View {
             .environmentObject(viewModel)
             .environmentObject(userClass)
         } else {
-            LoginView()
+            Button("login") {
+                viewModel.authenticate()
+            }
         }
         
     }

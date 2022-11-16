@@ -16,6 +16,11 @@ struct Location: Identifiable, Codable, Equatable {
     var type: String
     let latitude: Double
     let longitude: Double
+    var pendingStatus: PendingStatus = .pending
+    
+    enum PendingStatus: Codable {
+        case accepted, declined, pending
+    }
     
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

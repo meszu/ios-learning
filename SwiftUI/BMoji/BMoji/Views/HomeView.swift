@@ -15,33 +15,56 @@ struct HomeView: View {
     @State private var isShowingChangeUserData = false
 
     var body: some View {
-        NavigationView {
-            List {
-                Section {
+        GeometryReader { proxy in
+            NavigationView {
+                List {
+     
                     HeaderView()
-                }
-                
-                Button("Add example") {
-                    viewModel.addLocation()
-                }
-                
-                Section("Accept or Decline") {
-                    ForEach(viewModel.locations) { location in
-                        Text(location.name)
+                        .frame(width: proxy.size.width)
+                        .listRowBackground(Color.yellow)
+
+                    Button("Add example") {
+                        viewModel.addLocation()
                     }
-                    .onDelete(perform: removeItem)
+                    
+                    Section("Accept or Decline") {
+                        ForEach(viewModel.locations) { location in
+                            Text(location.name)
+                        }
+                        .onDelete(perform: removeItem)
+                    }
+                    
+                    Section("Accepted events") {
+                        ForEach(viewModel.locations.filter { $0.pendingStatus == .accepted }) { location in
+                            Text(location.name)
+                        }
+                    }
+                    
+                    Section("Declined events") {
+                        ForEach(viewModel.locations.filter { $0.pendingStatus == .declined }) { location in
+                            Text(location.name)
+                        }
+                    }
                 }
-            }
-            .toolbar {
-                Button {
-                    isShowingChangeUserData = true
-                } label: {
-                    Image(systemName: "square.and.pencil")
+                .toolbar {
+                    Button {
+                        isShowingChangeUserData = true
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                    }
+                    
+                    Button {
+                        Task { @MainActor in
+                            viewModel.isUnlocked = false
+                        }
+                    } label: {
+                        Image(systemName: "door.left.hand.closed")
+                    }
                 }
-            }
-            .navigationTitle("Profile")
-            .sheet(isPresented: $isShowingChangeUserData) {
-                ChangeUserData()
+                .navigationTitle("Profile")
+                .sheet(isPresented: $isShowingChangeUserData) {
+                    ChangeUserData()
+                }
             }
         }
     }
