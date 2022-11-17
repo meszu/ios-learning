@@ -13,6 +13,7 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     @State private var isShowingChangeUserData = false
+    @State private var showingSettings = false
     
     private var pendingLocations: [Location] { return  viewModel.locations.filter { $0.pendingStatus == .pending }
     }
@@ -28,9 +29,6 @@ struct HomeView: View {
         GeometryReader { proxy in
             NavigationView {
                 List {
-                    HeaderView()
-                        .listRowBackground(Color.pink.opacity(0.5))
-                    
                     Button("Add example") {
                         viewModel.addLocation()
                     }
@@ -102,17 +100,34 @@ struct HomeView: View {
                     }
                 }
                 .toolbar {
-                    Button {
-                        isShowingChangeUserData = true
-                    } label: {
-                        Image(systemName: "square.and.pencil")
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            isShowingChangeUserData = true
+                        } label: {
+                            Image(systemName: "square.and.pencil")
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                           showingSettings = true
+                        } label: {
+                            Image(uiImage: userClass.user.image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 30, height: 30)
+                                .clipShape(Circle())
+                        }
                     }
                 }
                 .navigationTitle("Profile")
-                .sheet(isPresented: $isShowingChangeUserData) {
-                    ChangeUserData()
-                }
                 .navigationBarTitleDisplayMode(.inline)
+                .sheet(isPresented: $isShowingChangeUserData) {
+                    // valamit csinál majd
+                }
+                .sheet(isPresented: $showingSettings) {
+                    SettingsHeaderView()
+                }
             }
         }
     }
@@ -137,50 +152,6 @@ struct HomeView: View {
                 viewModel.deleteLocation(at: index)
             }
         }
-    }
-}
-
-struct HeaderView: View {
-    @EnvironmentObject var userClass: UserClass
-    var body: some View {
-        HStack {
-            Spacer()
-            
-            VStack {
-                ZStack(alignment: .bottomTrailing) {
-                    Circle()
-                        .stroke(.black, style: StrokeStyle(lineWidth: 5))
-                        .frame(width: 100, height: 100)
-                    Image(uiImage: userClass.user.image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                    Circle()
-                        .frame(width: 30, height: 30)
-                        .offset(x: 0, y: -8)
-                    Image(systemName: "camera.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .offset(x: 0, y: -8)
-                        .foregroundStyle(.black)
-                    
-                }
-                
-                HStack {
-                    Text(userClass.user.firstName)
-                        .font(.title)
-                        .foregroundColor(.secondary)
-                    Text(userClass.user.lastName)
-                        .font(.title.bold())
-                        .foregroundColor(.primary)
-                }
-            }
-            
-            Spacer()
-        }
-        
     }
 }
 
