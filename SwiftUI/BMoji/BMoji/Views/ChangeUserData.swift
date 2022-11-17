@@ -26,8 +26,8 @@ struct ChangeUserData: View {
         NavigationView {
             Form {
                 Section("Change your name") {
-                    TextField("First Name", text: $firstName)
-                    TextField("Last Name", text: $lastName)
+                    TextField(userClass.user.firstName, text: $firstName)
+                    TextField(userClass.user.lastName, text: $lastName)
                 }
                 
                 VStack {

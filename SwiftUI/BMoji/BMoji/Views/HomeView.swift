@@ -28,55 +28,67 @@ struct HomeView: View {
         GeometryReader { proxy in
             NavigationView {
                 List {
-     
                     HeaderView()
-                        .frame(width: proxy.size.width)
-                        .listRowBackground(Color.yellow)
-
+                        .listRowBackground(Color.pink.opacity(0.5))
+                    
                     Button("Add example") {
                         viewModel.addLocation()
                     }
                     
                     Section("Accept or Decline") {
-                        ForEach(pendingLocations, id: \.id) { location in
-                            Text(location.name)
-                                .swipeActions {
-                                    Button {
-                                        viewModel.changeStatus(location: location, to: .accepted)
-                                    } label: {
-                                        Image(systemName: "checkmark.circle")
+                        if pendingLocations.isEmpty {
+                            Text("You have no invitation yet.")
+                        } else {
+                            ForEach(pendingLocations, id: \.id) { location in
+                                Text(location.name)
+                                    .swipeActions {
+                                        Button {
+                                            viewModel.changeStatus(location: location, to: .accepted)
+                                        } label: {
+                                            Label("Accept", systemImage: "checkmark.circle.fill")
+                                        }
+                                        .tint(.green)
+                                        
+                                        Button {
+                                            viewModel.changeStatus(location: location, to: .declined)
+                                        } label: {
+                                            Label("Decline", systemImage: "minus.circle.fill")
+                                        }
+                                        .tint(.pink)
                                     }
-                                    
-                                    Button {
-                                        viewModel.changeStatus(location: location, to: .declined)
-                                    } label: {
-                                        Image(systemName: "minus.circle")
-                                    }
-                                }
+                            }
                         }
-//                        .onDelete(perform: removeItem)
+                        
+                        //                        .onDelete(perform: removeItem)
                     }
                     
                     Section("Accepted events") {
-                        ForEach(acceptedLocations, id: \.id) { location in
-                            NavigationLink {
-                                VStack {
+                        if acceptedLocations.isEmpty {
+                            Text("You have no accepted events.")
+                        } else {
+                            ForEach(acceptedLocations, id: \.id) { location in
+                                NavigationLink {
+                                    VStack {
+                                        Text(location.name)
+                                        Text(location.description)
+                                    }
+                                } label: {
                                     Text(location.name)
-                                    Text(location.description)
                                 }
-                            } label: {
-                                Text(location.name)
                             }
-                            
+                            .onDelete(perform: removeAcceptedLocation)
                         }
-                        .onDelete(perform: removeItem)
                     }
                     
                     Section("Declined events") {
-                        ForEach(declinedLocations, id: \.id) { location in
-                            Text(location.name)
+                        if declinedLocations.isEmpty {
+                            Text("You do not have any declined events.")
+                        } else {
+                            ForEach(declinedLocations, id: \.id) { location in
+                                Text(location.name)
+                            }
+                            .onDelete(perform: removeDeclinedLocation)
                         }
-                        .onDelete(perform: removeItem)
                     }
                     
                     Section {
@@ -100,6 +112,7 @@ struct HomeView: View {
                 .sheet(isPresented: $isShowingChangeUserData) {
                     ChangeUserData()
                 }
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
@@ -130,24 +143,44 @@ struct HomeView: View {
 struct HeaderView: View {
     @EnvironmentObject var userClass: UserClass
     var body: some View {
-        HStack(alignment: .top, spacing: 24) {
-            Image(uiImage: userClass.user.image)
-                .resizable()
-                .frame(width: 80, height: 80)
-                .cornerRadius(20)
-                .padding(.leading, 30)
-
-            VStack(alignment: .leading) {
-                Text(userClass.user.firstName)
-                    .font(.title)
-                    .foregroundColor(.secondary)
-                Text(userClass.user.lastName)
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
+        HStack {
+            Spacer()
+            
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    Circle()
+                        .stroke(.black, style: StrokeStyle(lineWidth: 5))
+                        .frame(width: 100, height: 100)
+                    Image(uiImage: userClass.user.image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .offset(x: 0, y: -8)
+                    Image(systemName: "camera.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .offset(x: 0, y: -8)
+                        .foregroundStyle(.black)
+                    
+                }
+                
+                HStack {
+                    Text(userClass.user.firstName)
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                    Text(userClass.user.lastName)
+                        .font(.title.bold())
+                        .foregroundColor(.primary)
+                }
             }
             
             Spacer()
         }
+        
     }
 }
 

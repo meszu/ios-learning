@@ -12,7 +12,7 @@ import MapKit
 @MainActor class ViewModel: ObservableObject {
     @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 46.4521, longitude: 17.0190), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     @Published private(set) var locations: [Location]
-    @Published var isUnlocked = false
+    @Published var isUnlocked = true
     @Published var selectedPlace: Location?
     
     let savePath = FileManager.documentsDirectory.appendingPathExtension("SavePlace")
