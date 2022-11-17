@@ -25,14 +25,21 @@ struct MapBalloon: View {
     
     var body: some View {
         ZStack {
-            MapBalloonShape()
-                .stroke(strokeColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
-                .frame(width: 80, height: 64)
+            Circle()
+                .foregroundColor(strokeColor.opacity(0.4))
+                .frame(width: 64, height: 64)
+//            MapBalloonShape()
+//                .stroke(strokeColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
+//                .frame(width: 80, height: 64)
 
-            Image(systemName: shape)
-                .resizable()
-                .frame(width: 30, height: 30)
-                .offset(CGSize(width: 0, height: -10))
+            Text(shape)
+                .frame(width: 44, height: 44)
+                .padding(2)
+                .font(.largeTitle)
+//            Image(systemName: shape)
+//                .resizable()
+//                .frame(width: 30, height: 30)
+//                .offset(CGSize(width: 0, height: -10))
         }
     }
 }

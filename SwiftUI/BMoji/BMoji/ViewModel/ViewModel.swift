@@ -15,13 +15,28 @@ import MapKit
     @Published var isUnlocked = false
     @Published var selectedPlace: Location?
     
-    let savePath = FileManager.documentsDirectory.appendingPathExtension("SavedPlaces")
+    let savePath = FileManager.documentsDirectory.appendingPathExtension("SavePlace")
     
     init() {
-        do {
-            let data = try Data(contentsOf: savePath)
-            locations = try JSONDecoder().decode([Location].self, from: data)
-        } catch {
+//        do {
+//            let data = try Data(contentsOf: savePath)
+//            locations = try JSONDecoder().decode([Location].self, from: data)
+//        } catch {
+//            locations = []
+//        }
+        
+        if let data = UserDefaults.standard.data(forKey: "LocationFile") {
+            print("Successfully read the data from UserDefaults")
+            if let decoded = try? JSONDecoder().decode([Location].self, from: data) {
+                print("Successfully decoded the data")
+                locations = decoded
+                return
+            } else {
+                print("failed while decoding")
+                locations = []
+            }
+        } else {
+            print("failed while reading data from userdefaults")
             locations = []
         }
     }
@@ -29,7 +44,8 @@ import MapKit
     func save() {
         do {
             let data = try JSONEncoder().encode(locations)
-            try data.write(to: savePath, options: [.atomic, .completeFileProtection])
+            UserDefaults.standard.set(data, forKey: "LocationFile")
+    //        try data.write(to: savePath, options: [.atomic, .completeFileProtection])
         } catch {
             print("Error while saving data")
         }
@@ -50,8 +66,15 @@ import MapKit
         save()
     }
     
-    func deleteLocation(at offset: IndexSet) {
-        locations.remove(atOffsets: offset)
+    func deleteLocation(at index: Int) {
+        locations.remove(at: index)
+        save()
+    }
+    
+    func changeStatus(location: Location, to status: Location.PendingStatus) {
+        if let index = locations.firstIndex(of: location) {
+            locations[index].pendingStatus = status
+        }
         save()
     }
     

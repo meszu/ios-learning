@@ -28,11 +28,11 @@ struct Location: Identifiable, Codable, Equatable {
     var imageName: String {
         switch type {
         case "JIM":
-            return "figure.gymnastics"
+            return "💉"
         case "Smoke":
-            return "smoke"
+            return "🚬"
         default:
-            return "questionmark.circle.fill"
+            return "❓"
         }
     }
     var annotationItemColor: Color {

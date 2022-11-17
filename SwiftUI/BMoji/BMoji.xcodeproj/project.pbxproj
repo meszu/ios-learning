@@ -13,6 +13,7 @@
 		1419A56628DDDDC2008AE81F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1419A56528DDDDC2008AE81F /* Assets.xcassets */; };
 		1419A56928DDDDC2008AE81F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1419A56828DDDDC2008AE81F /* Preview Assets.xcassets */; };
 		1451501F2921007C00BC3D07 /* MapBalloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1451501E2921007C00BC3D07 /* MapBalloon.swift */; };
+		1467986529263E6E00D85B54 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1467986429263E6E00D85B54 /* DetailsView.swift */; };
 		14A7F7EB292009F4006DEA77 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F7EA292009F4006DEA77 /* Location.swift */; };
 		14A7F7ED29200AE0006DEA77 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F7EC29200AE0006DEA77 /* ViewModel.swift */; };
 		14A7F7EF29200E6D006DEA77 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A7F7EE29200E6D006DEA77 /* FileManager-DocumentsDirectory.swift */; };
@@ -33,6 +34,7 @@
 		1419A56528DDDDC2008AE81F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1419A56828DDDDC2008AE81F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1451501E2921007C00BC3D07 /* MapBalloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBalloon.swift; sourceTree = "<group>"; };
+		1467986429263E6E00D85B54 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		14A7F7EA292009F4006DEA77 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		14A7F7EC29200AE0006DEA77 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		14A7F7EE29200E6D006DEA77 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				1403FAA628E1D81B00E94CEE /* HomeView.swift */,
 				14A7F7F029201B20006DEA77 /* MapView.swift */,
 				14A7F7F2292048A7006DEA77 /* EditView.swift */,
+				1467986429263E6E00D85B54 /* DetailsView.swift */,
 				14DA33F4292184F400533DDD /* ChangeUserData.swift */,
 			);
 			path = Views;
@@ -236,6 +239,7 @@
 				14A7F7ED29200AE0006DEA77 /* ViewModel.swift in Sources */,
 				14DA33F1292180BF00533DDD /* User.swift in Sources */,
 				14A7F7EB292009F4006DEA77 /* Location.swift in Sources */,
+				1467986529263E6E00D85B54 /* DetailsView.swift in Sources */,
 				14DA33F729218D3A00533DDD /* ImagePicker.swift in Sources */,
 				1419A56228DDDDC0008AE81F /* BMojiApp.swift in Sources */,
 				14DA33E92921714900533DDD /* GrowingButton.swift in Sources */,

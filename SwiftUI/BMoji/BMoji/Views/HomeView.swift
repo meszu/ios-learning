@@ -13,6 +13,16 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     @State private var isShowingChangeUserData = false
+    
+    private var pendingLocations: [Location] { return  viewModel.locations.filter { $0.pendingStatus == .pending }
+    }
+    
+    private var acceptedLocations: [Location] { return  viewModel.locations.filter { $0.pendingStatus == .accepted }
+    }
+    
+    private var declinedLocations: [Location] { return  viewModel.locations.filter { $0.pendingStatus == .declined }
+    }
+    
 
     var body: some View {
         GeometryReader { proxy in
@@ -28,21 +38,54 @@ struct HomeView: View {
                     }
                     
                     Section("Accept or Decline") {
-                        ForEach(viewModel.locations) { location in
+                        ForEach(pendingLocations, id: \.id) { location in
+                            Text(location.name)
+                                .swipeActions {
+                                    Button {
+                                        viewModel.changeStatus(location: location, to: .accepted)
+                                    } label: {
+                                        Image(systemName: "checkmark.circle")
+                                    }
+                                    
+                                    Button {
+                                        viewModel.changeStatus(location: location, to: .declined)
+                                    } label: {
+                                        Image(systemName: "minus.circle")
+                                    }
+                                }
+                        }
+//                        .onDelete(perform: removeItem)
+                    }
+                    
+                    Section("Accepted events") {
+                        ForEach(acceptedLocations, id: \.id) { location in
+                            NavigationLink {
+                                VStack {
+                                    Text(location.name)
+                                    Text(location.description)
+                                }
+                            } label: {
+                                Text(location.name)
+                            }
+                            
+                        }
+                        .onDelete(perform: removeItem)
+                    }
+                    
+                    Section("Declined events") {
+                        ForEach(declinedLocations, id: \.id) { location in
                             Text(location.name)
                         }
                         .onDelete(perform: removeItem)
                     }
                     
-                    Section("Accepted events") {
-                        ForEach(viewModel.locations.filter { $0.pendingStatus == .accepted }) { location in
-                            Text(location.name)
-                        }
-                    }
-                    
-                    Section("Declined events") {
-                        ForEach(viewModel.locations.filter { $0.pendingStatus == .declined }) { location in
-                            Text(location.name)
+                    Section {
+                        Button {
+                            Task { @MainActor in
+                                viewModel.isUnlocked = false
+                            }
+                        } label: {
+                            Label("Log Out", systemImage: "moon.zzz")
                         }
                     }
                 }
@@ -51,14 +94,6 @@ struct HomeView: View {
                         isShowingChangeUserData = true
                     } label: {
                         Image(systemName: "square.and.pencil")
-                    }
-                    
-                    Button {
-                        Task { @MainActor in
-                            viewModel.isUnlocked = false
-                        }
-                    } label: {
-                        Image(systemName: "door.left.hand.closed")
                     }
                 }
                 .navigationTitle("Profile")
@@ -70,7 +105,25 @@ struct HomeView: View {
     }
     
     func removeItem(at offsets: IndexSet) {
-        viewModel.deleteLocation(at: offsets)
+        for offset in offsets {
+            viewModel.deleteLocation(at: offset)
+        }
+    }
+    
+    func removeAcceptedLocation(at offsets: IndexSet) {
+        for offset in offsets {
+            if let index = viewModel.locations.firstIndex(where: {$0.id == acceptedLocations[offset].id}) {
+                viewModel.deleteLocation(at: index)
+            }
+        }
+    }
+    
+    func removeDeclinedLocation(at offsets: IndexSet) {
+        for offset in offsets {
+            if let index = viewModel.locations.firstIndex(where: {$0.id == declinedLocations[offset].id}) {
+                viewModel.deleteLocation(at: index)
+            }
+        }
     }
 }
 
@@ -82,7 +135,8 @@ struct HeaderView: View {
                 .resizable()
                 .frame(width: 80, height: 80)
                 .cornerRadius(20)
-            
+                .padding(.leading, 30)
+
             VStack(alignment: .leading) {
                 Text(userClass.user.firstName)
                     .font(.title)
@@ -91,6 +145,8 @@ struct HeaderView: View {
                     .font(.largeTitle)
                     .foregroundColor(.black)
             }
+            
+            Spacer()
         }
     }
 }
