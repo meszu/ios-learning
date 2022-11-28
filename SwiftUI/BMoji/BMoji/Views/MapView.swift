@@ -13,61 +13,62 @@ struct MapView: View {
         
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
-                MapAnnotation(coordinate: location.coordinate) {
-                    VStack {
-                        MapBalloon(shape: location.imageName, strokeColor: location.annotationItemColor)
-//                        Image(systemName: location.imageName)
-//                            .resizable()
-//                            .foregroundColor(location.annotationItemColor)
-//                            .frame(width: 44, height: 44)
-//                            .padding(2)
-//                            .background(.white)
-//                            .clipShape(Circle())
-                        
-                        Text("\(location.name)")
-                            .fixedSize()
-                    }
-                    .onTapGesture {
-                        viewModel.selectedPlace = location
-                    }
-                }
-            }
-//            .onLongPressGesture {
-//                viewModel.selectedPlace = location
-//            }
+            map
             
             Circle()
                 .frame(width: 20, height: 20)
                 .foregroundColor(.yellow.opacity(0.4))
             
-            VStack {
-                HStack {
-                    Spacer()
-                    
-                    Button {
-                        // create a new location
-                        viewModel.addLocation()
-                    } label: {
-                        Image(systemName: "plus")
-                            .padding()
-                            .background(.black.opacity(0.75))
-                            .foregroundColor(.white)
-                            .font(.title)
-                            .clipShape(Circle())
-                            .padding(.trailing)
-                            .padding(.top)
-                    }
-                    .buttonStyle(.borderless)
-                }
-                
-                Spacer()
-            }
+            addButton
         }
+        .ignoresSafeArea(edges: .top)
         .sheet(item: $viewModel.selectedPlace) { place in
             EditView(location: place) { newLocation in
                 viewModel.update(location: newLocation)
             }
+        }
+        
+    }
+    
+    var map: some View {
+        Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
+            MapAnnotation(coordinate: location.coordinate) {
+                VStack {
+                    MapBalloon(shape: location.type, strokeColor: location.annotationItemColor)
+                    
+                    Text("\(location.name)")
+                        .fixedSize()
+                }
+                .onTapGesture {
+                    viewModel.selectedPlace = location
+                }
+            }
+        }
+    }
+    
+    var addButton: some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                Button {
+                    // create a new location
+                    viewModel.addLocation()
+                } label: {
+                    Image(systemName: "plus")
+                        .padding()
+                        .background(.black.opacity(0.75))
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .clipShape(Circle())
+                }
+                .buttonStyle(.borderless)
+                
+                Spacer()
+            }
+            .padding(.bottom, 30)
         }
     }
 }

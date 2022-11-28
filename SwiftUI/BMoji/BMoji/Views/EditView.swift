@@ -16,25 +16,35 @@ enum MeetingType: CaseIterable {
 struct EditView: View {
     @State private var selectedType: MeetingType = .none
     @State private var isShowingConfirmationDialog = false
+    @State private var showEmojiGrid = false
+    
+    @State private var currentMeetingType = "❔"
+    
+    let emojis = ["🧠", "🏎️", "🎥", "💈", "🚬", "💉", "❔"]
+    
+    @EnvironmentObject var originalVM: ViewModel
     
     @Environment(\.dismiss) var dismiss
     var onSave: (Location) -> Void
     
-    @StateObject private var viewModel: ViewModel
+    @StateObject private var viewModel: EditViewModel
     
     var body: some View {
         NavigationView {
             Form {
                 Section("Edit name and description") {
                     TextField("Meeting's name", text: $viewModel.name)
-                    TextField("Description", text: $viewModel.description)
+                        .textFieldStyle(.automatic)
+                    TextEditor(text: $viewModel.description)
+                        .textFieldStyle(.automatic)
                 }
                 
-                Section("select meeting type") {
-                    Button("Click here to select meeting type") {
-                        isShowingConfirmationDialog = true
+                Picker("Meeting type", selection: $viewModel.type) {
+                    ForEach(emojis, id: \.self) { emoji in
+                        Text(emoji)
                     }
                 }
+
             }
             .navigationTitle("Add details")
             .toolbar {
@@ -44,28 +54,6 @@ struct EditView: View {
                     dismiss()
                 }
             }
-            .confirmationDialog("Select Meeting Type", isPresented: $isShowingConfirmationDialog) {
-                Button {
-                    viewModel.type = "JIM"
-                } label: {
-                    Label("JIM", systemImage: "figure.gymnastics")
-                }
-                .foregroundColor(selectedType == .jim ? .green : .blue)
-                
-                Button {
-                    viewModel.type = "Smoke"
-                } label: {
-                    Label("Smoke", systemImage: "smoke")
-                }
-                .foregroundColor(selectedType == .smoke ? .green : .blue)
-                
-                Button {
-                    viewModel.type = "None"
-                } label: {
-                    Label("Don't know yet", systemImage: "questionmark.circle.fill")
-                }
-                .foregroundColor(selectedType == .none ? .green : .blue)
-            }
         }
         
     }
@@ -74,7 +62,7 @@ struct EditView: View {
     init(location: Location, onSave: @escaping (Location) -> Void) {
         self.onSave = onSave
     
-        _viewModel = StateObject(wrappedValue: ViewModel(location: location))
+        _viewModel = StateObject(wrappedValue: EditViewModel(location: location))
     }
 }
 

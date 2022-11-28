@@ -8,17 +8,13 @@
 import SwiftUI
 
 extension EditView {
-    @MainActor class ViewModel: ObservableObject {
-        enum LoadingState {
-            case loading, loaded, failed
-        }
-        
+    @MainActor class EditViewModel: ObservableObject {
         @Published var name: String
         @Published var description: String
         @Published var type: String
-        
-        @Published var loadingState = LoadingState.loading
-        
+                
+        @Published var selectedLocation: Location?
+                
         var location: Location
         
         init(location: Location) {
@@ -37,5 +33,6 @@ extension EditView {
             
             return newLocation
         }
+        
     }
 }

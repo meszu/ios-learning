@@ -33,71 +33,11 @@ struct HomeView: View {
                         viewModel.addLocation()
                     }
                     
-                    Section("Accept or Decline") {
-                        if pendingLocations.isEmpty {
-                            Text("You have no invitation yet.")
-                        } else {
-                            ForEach(pendingLocations, id: \.id) { location in
-                                Text(location.name)
-                                    .swipeActions {
-                                        Button {
-                                            viewModel.changeStatus(location: location, to: .accepted)
-                                        } label: {
-                                            Label("Accept", systemImage: "checkmark.circle.fill")
-                                        }
-                                        .tint(.green)
-                                        
-                                        Button {
-                                            viewModel.changeStatus(location: location, to: .declined)
-                                        } label: {
-                                            Label("Decline", systemImage: "minus.circle.fill")
-                                        }
-                                        .tint(.pink)
-                                    }
-                            }
-                        }
-                        
-                        //                        .onDelete(perform: removeItem)
-                    }
+                    pendingEvents
                     
-                    Section("Accepted events") {
-                        if acceptedLocations.isEmpty {
-                            Text("You have no accepted events.")
-                        } else {
-                            ForEach(acceptedLocations, id: \.id) { location in
-                                NavigationLink {
-                                    VStack {
-                                        Text(location.name)
-                                        Text(location.description)
-                                    }
-                                } label: {
-                                    Text(location.name)
-                                }
-                            }
-                            .onDelete(perform: removeAcceptedLocation)
-                        }
-                    }
+                    acceptedEvents
                     
-                    Section("Declined events") {
-                        if declinedLocations.isEmpty {
-                            Text("You do not have any declined events.")
-                        } else {
-                            ForEach(declinedLocations, id: \.id) { location in
-                                Text(location.name)
-                            }
-                            .onDelete(perform: removeDeclinedLocation)
-                        }
-                    }
-                    
-                    Section {
-                        Button {
-                            Task { @MainActor in
-                                viewModel.isUnlocked = false
-                            }
-                        } label: {
-                            Label("Log Out", systemImage: "moon.zzz")
-                        }
-                    }
+                    declinedEvents
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -126,7 +66,67 @@ struct HomeView: View {
                     // valamit csinál majd
                 }
                 .sheet(isPresented: $showingSettings) {
-                    SettingsHeaderView()
+                    AccountView()
+                }
+            }
+        }
+    }
+    
+    var declinedEvents: some View {
+        Section("Declined events") {
+            if declinedLocations.isEmpty {
+                Text("You do not have any declined events.")
+            } else {
+                ForEach(declinedLocations, id: \.id) { location in
+                    Text(location.name)
+                }
+                .onDelete(perform: removeDeclinedLocation)
+            }
+        }
+    }
+    
+    var acceptedEvents: some View {
+        Section("Accepted events") {
+            if acceptedLocations.isEmpty {
+                Text("You have no accepted events.")
+            } else {
+                ForEach(acceptedLocations, id: \.id) { location in
+                    NavigationLink {
+                        VStack {
+                            Text(location.name)
+                            Text(location.description)
+                        }
+                    } label: {
+                        Text(location.name)
+                    }
+                }
+                .onDelete(perform: removeAcceptedLocation)
+            }
+        }
+    }
+    
+    var pendingEvents: some View {
+        Section("Pending") {
+            if pendingLocations.isEmpty {
+                Text("You have no invitation yet.")
+            } else {
+                ForEach(pendingLocations, id: \.id) { location in
+                    Text(location.name)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            Button {
+                                viewModel.changeStatus(location: location, to: .accepted)
+                            } label: {
+                                Label("Accept", systemImage: "pin")
+                            }
+                            .tint(.blue)
+                            
+                            Button {
+                                viewModel.changeStatus(location: location, to: .declined)
+                            } label: {
+                                Label("Decline", systemImage: "minus.circle")
+                            }
+                            .tint(.red)
+                        }
                 }
             }
         }

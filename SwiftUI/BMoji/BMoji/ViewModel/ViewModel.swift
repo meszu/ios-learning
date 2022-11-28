@@ -61,7 +61,7 @@ import MapKit
     }
     
     func addLocation() {
-        let newLocation = Location(id: UUID(), name: "Dumcsi", description: "Szokásos edzés előtti lazulás", type: "smoke.fill", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
+        let newLocation = Location(id: UUID(), name: "Találka", description: "Szokásos edzés előtti lazulás", type: "💉", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
         locations.append(newLocation)
         save()
     }

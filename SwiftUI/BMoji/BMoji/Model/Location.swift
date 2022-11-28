@@ -25,6 +25,7 @@ struct Location: Identifiable, Codable, Equatable {
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    
     var imageName: String {
         switch type {
         case "JIM":
@@ -35,6 +36,7 @@ struct Location: Identifiable, Codable, Equatable {
             return "❓"
         }
     }
+    
     var annotationItemColor: Color {
         switch type {
         case "JIM":
@@ -46,7 +48,7 @@ struct Location: Identifiable, Codable, Equatable {
         }
     }
 
-    static let example = Location(id: UUID(), name: "Buckingham Palace", description: "Where the Royal Family lives.", type: "questionmark.circle.fill", latitude: 46.4521, longitude: 17.0190)
+    static let example = Location(id: UUID(), name: "Buckingham Palace", description: "Where the Royal Family lives.", type: "❔", latitude: 46.4521, longitude: 17.0190)
     
     static func ==(lhs: Location, rhs: Location) -> Bool {
         lhs.id == rhs.id
