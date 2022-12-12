@@ -7,14 +7,7 @@
 
 import SwiftUI
 
-enum MeetingType: CaseIterable {
-    case jim
-    case smoke
-    case none
-}
-
 struct EditView: View {
-    @State private var selectedType: MeetingType = .none
     @State private var isShowingConfirmationDialog = false
     @State private var showEmojiGrid = false
     

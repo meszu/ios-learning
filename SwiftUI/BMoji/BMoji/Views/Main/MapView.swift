@@ -21,7 +21,7 @@ struct MapView: View {
             
             addButton
         }
-        .ignoresSafeArea(edges: .top)
+        .ignoresSafeArea()
         .sheet(item: $viewModel.selectedPlace) { place in
             EditView(location: place) { newLocation in
                 viewModel.update(location: newLocation)
@@ -34,10 +34,12 @@ struct MapView: View {
         Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
             MapAnnotation(coordinate: location.coordinate) {
                 VStack {
-                    MapBalloon(shape: location.type, strokeColor: location.annotationItemColor)
+                    MapBalloon(shape: location.type, strokeColor: .black)
                     
                     Text("\(location.name)")
                         .fixedSize()
+                        .foregroundColor(.primary)
+                        .font(.title3.weight(.semibold))
                 }
                 .onTapGesture {
                     viewModel.selectedPlace = location
@@ -68,7 +70,7 @@ struct MapView: View {
                 
                 Spacer()
             }
-            .padding(.bottom, 30)
+            .offset(y: -90)
         }
     }
 }

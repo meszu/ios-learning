@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct User: Codable, Identifiable {
-    var id: UUID
+    var id = UUID()
     var firstName: String
     var lastName: String
     var friends: [User]
@@ -23,7 +23,7 @@ struct User: Codable, Identifiable {
         return uIImage
     }
     
-    static let example = User(id: UUID(), firstName: "Kristóf", lastName: "Mészáros", friends: [], events: [])
+    static let example = User(firstName: "Kristóf", lastName: "Mészáros", friends: [], events: [])
 }
 
 class UserClass: ObservableObject {

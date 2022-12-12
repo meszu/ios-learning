@@ -26,48 +26,46 @@ struct HomeView: View {
     
 
     var body: some View {
-        GeometryReader { proxy in
-            NavigationView {
-                List {
-                    Button("Add example") {
-                        viewModel.addLocation()
-                    }
-                    
-                    pendingEvents
-                    
-                    acceptedEvents
-                    
-                    declinedEvents
+        NavigationView {
+            List {
+                Button("Add example") {
+                    viewModel.addLocation()
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            isShowingChangeUserData = true
-                        } label: {
-                            Image(systemName: "square.and.pencil")
-                        }
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                           showingSettings = true
-                        } label: {
-                            Image(uiImage: userClass.user.image)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 30, height: 30)
-                                .clipShape(Circle())
-                        }
+                
+                pendingEvents
+                
+                acceptedEvents
+                
+                declinedEvents
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isShowingChangeUserData = true
+                    } label: {
+                        Image(systemName: "square.and.pencil")
                     }
                 }
-                .navigationTitle("Profile")
-                .navigationBarTitleDisplayMode(.inline)
-                .sheet(isPresented: $isShowingChangeUserData) {
-                    // valamit csinál majd
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        showingSettings = true
+                    } label: {
+                        Image(uiImage: userClass.user.image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    }
                 }
-                .sheet(isPresented: $showingSettings) {
-                    AccountView()
-                }
+            }
+            .navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $isShowingChangeUserData) {
+                // valamit csinál majd
+            }
+            .sheet(isPresented: $showingSettings) {
+                AccountView()
             }
         }
     }
