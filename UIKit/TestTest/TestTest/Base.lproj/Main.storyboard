@@ -71,12 +71,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5VZ-tK-xHY">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5VZ-tK-xHY">
+                                <rect key="frame" x="0.0" y="91" width="390" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OfferCell" rowHeight="120" id="jtD-RE-3lb" customClass="OfferCell" customModule="TestTest" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="120"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="390" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jtD-RE-3lb" id="s7I-fX-25G">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="120"/>
@@ -144,7 +144,7 @@
                             <constraint firstItem="5VZ-tK-xHY" firstAttribute="leading" secondItem="YHV-oC-59h" secondAttribute="leading" id="1v4-yh-dgi"/>
                             <constraint firstAttribute="bottom" secondItem="5VZ-tK-xHY" secondAttribute="bottom" id="J5y-qm-xRZ"/>
                             <constraint firstItem="YHV-oC-59h" firstAttribute="trailing" secondItem="5VZ-tK-xHY" secondAttribute="trailing" id="L78-Bf-oHF"/>
-                            <constraint firstItem="5VZ-tK-xHY" firstAttribute="top" secondItem="wSH-W5-5Sq" secondAttribute="top" id="QMI-A5-MwL"/>
+                            <constraint firstItem="5VZ-tK-xHY" firstAttribute="top" secondItem="YHV-oC-59h" secondAttribute="top" id="QMI-A5-MwL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d9O-um-fOM"/>
@@ -179,7 +179,7 @@
     <resources>
         <image name="redArrow" width="96" height="96"/>
         <namedColor name="cellBackground">
-            <color red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.88999998569488525" green="0.88999998569488525" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

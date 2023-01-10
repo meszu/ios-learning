@@ -20,27 +20,20 @@ class OffersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "cellBackground")
         
         tblOffers.delegate = self
         tblOffers.dataSource = self
         
         tblOffers.rowHeight = UITableView.automaticDimension
         tblOffers.estimatedRowHeight = 140
-        tblOffers.backgroundColor = UIColor(named: "cellBackground")
-        
-        tblOffers.tableHeaderView = .init(frame: .init(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         
         navigationController?.navigationBar.barTintColor = UIColor.white
-        
-        
-                
+                     
         title = "Offers"
         
         /* Set the DetailView's back button's title to "Back" */
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "Back", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         
         
