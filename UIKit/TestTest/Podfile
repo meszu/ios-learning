@@ -1,0 +1,10 @@
+platform :ios, '12.0'
+
+target 'TestTest' do
+  use_frameworks!
+
+  # Pods for TestTest
+  
+  pod 'Moya', '~> 15.0'
+
+end

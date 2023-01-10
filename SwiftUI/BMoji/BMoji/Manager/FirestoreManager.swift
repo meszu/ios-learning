@@ -54,7 +54,6 @@ class FirestoreManager: ObservableObject {
                     print("\(document.documentID): \(document.data())")
                 }
             }
-            
         }
     }
     

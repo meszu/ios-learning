@@ -36,10 +36,10 @@ struct MapView: View {
                 VStack {
                     MapBalloon(shape: location.type, strokeColor: .black)
                     
-                    Text("\(location.name)")
-                        .fixedSize()
-                        .foregroundColor(.primary)
-                        .font(.title3.weight(.semibold))
+//                    Text("\(location.name)")
+//                        .fixedSize()
+//                        .foregroundColor(.primary)
+//                        .font(.title3.weight(.semibold))
                 }
                 .onTapGesture {
                     viewModel.selectedPlace = location
