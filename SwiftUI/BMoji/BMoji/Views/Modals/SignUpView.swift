@@ -31,7 +31,7 @@ struct SignUpView: View {
                 .blendMode(.overlay)
                 .slideFadeIn(show: appear[0], offset: 30)
             
-            Text("Access 120+ hours of courses, tutorials and livestreams")
+            Text("Organize meetings with emojis!")
                 .font(.headline)
                 .foregroundColor(.primary.opacity(0.7))
                 .slideFadeIn(show: appear[1], offset: 20)

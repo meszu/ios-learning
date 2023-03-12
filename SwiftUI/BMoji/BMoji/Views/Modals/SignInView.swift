@@ -28,7 +28,7 @@ struct SignInView: View {
                 .blendMode(.overlay)
                 .slideFadeIn(show: appear[0], offset: 30)
             
-            Text("Organize meetings with emojis")
+            Text("Organize meetings with emojis!")
                 .font(.headline)
                 .foregroundStyle(.secondary)
                 .slideFadeIn(show: appear[1], offset: 20)
